@@ -3,7 +3,7 @@ WITH stg_companies AS (
 ),
 final AS (
     SELECT 
-        {{ dbt_utils.generate_surrogate_key(['company']) }} as company_id,
+        MD5(company) as company_id,
         company as company_name,
         COUNT(DISTINCT job_id) as total_job_postings,
         MIN(posting_date) as first_posting_date,

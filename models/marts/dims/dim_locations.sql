@@ -3,7 +3,7 @@ WITH stg_locations AS (
 ),
 final AS (
     SELECT
-        {{ dbt_utils.generate_surrogate_key(['location_raw']) }} as location_id,
+        MD5(location_raw) as location_id,
         location_raw as location_name,
         city,
         state,

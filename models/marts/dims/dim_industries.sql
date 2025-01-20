@@ -3,7 +3,7 @@ WITH stg_industries AS (
 ),
 final AS (
     SELECT
-        {{ dbt_utils.generate_surrogate_key(['industry']) }} as industry_id,
+        MD5(industry) as industry_id,
         industry as industry_name
     FROM stg_industries
 )

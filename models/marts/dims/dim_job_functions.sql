@@ -3,7 +3,7 @@ WITH stg_functions AS (
 ),
 final AS (
     SELECT
-        {{ dbt_utils.generate_surrogate_key(['job_function']) }} as job_function_id,
+        MD5(job_function) as job_function_id,
         job_function as job_function_name
     FROM stg_functions
 )
