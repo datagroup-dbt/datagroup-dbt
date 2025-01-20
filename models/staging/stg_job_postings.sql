@@ -1,8 +1,5 @@
-{% set source_relation = source('raw', 'raw_jobs_data') %}
-
 WITH source AS (
-    SELECT *
-    FROM {{ source_relation }}
+    SELECT * FROM {{ source('raw', 'raw_jobs_data') }}
 ),
 renamed AS (
     SELECT
@@ -20,6 +17,7 @@ renamed AS (
         posted_time,
         expire_time,
         is_valid,
+        is_invalid,
         posting_date
     FROM source
 )
